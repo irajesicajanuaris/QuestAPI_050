@@ -82,8 +82,10 @@ fun HomeScreen(
     ) { innerPadding ->
         HomeStatus(
             homeUiState = viewModel.mhsUIState,
-            retryAction = { viewModel.getMhs() }, modifier = Modifier.padding(innerPadding),
-            ondetailClick = ondetailClick, ondeleteClick = {
+            retryAction = { viewModel.getMhs() },
+            modifier = Modifier.padding(innerPadding),
+            ondetailClick = ondetailClick,
+            ondeleteClick = {
                 viewModel.deleteMhs(it.nim)
                 viewModel.getMhs()
             }
@@ -197,24 +199,24 @@ fun MhsCard(
             Row (
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
-            ){
+            ) {
                 Text(
                     text = mahasiswa.nama,
                     style = MaterialTheme.typography.titleLarge,
                 )
                 Spacer(Modifier.weight(1f))
-                IconButton(onClick = { ondeleteClick(mahasiswa)}){
+                IconButton(onClick = { ondeleteClick(mahasiswa) }) {
                     Icon(
                         imageVector = Icons.Default.Delete,
                         contentDescription = null,
                     )
                 }
-
-                Text(
-                    text = mahasiswa.nim,
-                    style = MaterialTheme.typography.titleMedium
-                )
             }
+
+            Text(
+                text = mahasiswa.nim,
+                style = MaterialTheme.typography.titleMedium
+                )
 
             Text(
                 text = mahasiswa.kelas,

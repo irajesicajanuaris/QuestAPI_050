@@ -16,6 +16,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.input.KeyboardType
@@ -26,7 +27,9 @@ import com.example.pertemuan12.ui.navigation.DestinasiNavigasi
 import com.example.pertemuan12.ui.viewmodel.InsertUiEvent
 import com.example.pertemuan12.ui.viewmodel.InsertUiState
 import com.example.pertemuan12.ui.viewmodel.InsertViewModel
+import com.example.pertemuan12.ui.viewmodel.PenyediaViewModel
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 object DestinasiEntry : DestinasiNavigasi{
     override val route = "item_entry"
@@ -40,6 +43,7 @@ fun EntryMhsScreen(
     modifier: Modifier = Modifier,
     viewModel: InsertViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ){
+    val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold (
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),

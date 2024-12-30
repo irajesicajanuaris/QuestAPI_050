@@ -1,8 +1,6 @@
 package com.example.pertemuan12.service_api
 
 import com.example.pertemuan12.model.Mahasiswa
-import com.example.pertemuan12.repository.MahasiswaRepository
-import okio.IOException
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -31,40 +29,7 @@ interface MahasiswaService {
     @PUT("editmahasiswa.php/{nim}")
     suspend fun updateMahasiswa(@Query("nim")nim:String, @Body mahasiswa: Mahasiswa)
 
-    @DELETE("hapusmahasiswa.php/{nim}")
+    @DELETE("deletemahasiswa.php/{nim}")
     suspend fun deleteMahasiswa(@Query("nim")nim:String) : Response<Void>
 
-    class NetworkKontakRepository(
-        private val kontakApiService: MahasiswaService
-    ): MahasiswaRepository {
-        override suspend fun insertMahasiswa(mahasiswa: Mahasiswa) {
-            kontakApiService.insertMahasiswa(mahasiswa)
-        }
-
-        override suspend fun updateMahasiswa(nim: String, mahasiswa: Mahasiswa) {
-            kontakApiService.updateMahasiswa(nim, mahasiswa)
-        }
-
-        override suspend fun deleteMahasiswa(nim: String) {
-            try {
-                val response = kontakApiService.deleteMahasiswa(nim)
-                if (!response.isSuccessful){
-                    throw IOException("Failed to delete kontak. HTTP Status code:" +
-                    "${response.code()}")
-                } else {
-                    response.message()
-                    println(response.message())
-                }
-            } catch (e:Exception){
-                throw e
-            }
-        }
-
-        override suspend fun getMahasiswa(): List<Mahasiswa> =
-            kontakApiService.getAllMahasiswa()
-
-        override suspend fun getMahasiswabyNim(nim: String): Mahasiswa {
-           return kontakApiService.getMahasiswabyNim(nim)
-        }
     }
-}
