@@ -11,4 +11,5 @@
 6. Hasil Edit![hasiledit1](https://github.com/user-attachments/assets/f4373584-791f-48d5-9e8b-5bfac7608018) ![hasiledit2](https://github.com/user-attachments/assets/94569684-7377-47b5-b6c1-fcf54d739ccc)
 
 
-7. Hapus![edit](https://github.com/user-attachments/assets/dde7f104-9264-4771-ac9b-0be25ca27252)
+7. Hapus![hasil delete](https://github.com/user-attachments/assets/b207840d-6a77-4028-ab40-0b914aa8b04f)
+
